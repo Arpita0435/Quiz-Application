@@ -28,7 +28,8 @@ function startTimer() {
             document.getElementById("time").textContent = timeLeft;
         } else {
             clearInterval(timer);
-            nextQuestion();
+            document.getElementById("next-button").style.display = "none";
+            document.getElementById("submit-button").style.display = "block";  // Show Submit button
         }
     }, 1000);
 }
@@ -38,13 +39,18 @@ function displayQuestion() {
     document.getElementById("question").textContent = questionData.question;
     const optionsContainer = document.getElementById("options-container");
     optionsContainer.innerHTML = "";
-    
+
     questionData.options.forEach((option, index) => {
         const button = document.createElement("button");
         button.textContent = option;
         button.onclick = () => checkAnswer(index);
         optionsContainer.appendChild(button);
     });
+
+    if (currentQuestionIndex === questions.length - 1) {
+        document.getElementById("next-button").style.display = "none";  // Hide Next button on last question
+        document.getElementById("submit-button").style.display = "block";  // Show Submit button
+    }
 }
 
 function checkAnswer(selectedOptionIndex) {
@@ -53,19 +59,25 @@ function checkAnswer(selectedOptionIndex) {
         score++;
         document.getElementById("score-value").textContent = score;
     }
-    nextQuestion();
 }
 
 function nextQuestion() {
-    currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
+    if (currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex++;
         displayQuestion();
         timeLeft = 30;  // Reset timer for next question
         document.getElementById("time").textContent = timeLeft;
-    } else {
-        clearInterval(timer);
-        alert(`Quiz Over! Your score is: ${score}`);
     }
+}
+
+function submitQuiz() {
+    clearInterval(timer);
+    alert(`Quiz Submitted! Your final score is: ${score}`);
+    document.getElementById("next-button").style.display = "none";
+    document.getElementById("submit-button").style.display = "none";  // Hide Submit button
+    document.getElementById("timer").style.display = "none";  // Hide timer
+    document.getElementById("score").style.display = "none";  // Hide score display
+    // Optionally, you can show a final score or a "Restart Quiz" button
 }
 
 window.onload = function () {
