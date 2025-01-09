@@ -7,30 +7,34 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="user-info">
-        <h2>Enter your information to start the quiz</h2>
-        <form id="info-form">
-            <input type="text" id="name" placeholder="Your Name" required><br>
-            <input type="number" id="number" placeholder="Your Phone Number" required><br>
-            <input type="number" id="age" placeholder="Your Age" required><br>
-            <button type="submit">Start Quiz</button>
+    <div id="user-info" class="container">
+        <h2>Welcome to the Quiz App!</h2>
+        <p>Please fill in your details to begin.</p>
+        <form id="info-form" class="form">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="number" id="number" placeholder="Your Phone Number" required>
+            <input type="number" id="age" placeholder="Your Age" required>
+            <button type="submit" class="start-btn">Start Quiz</button>
         </form>
     </div>
 
-    <div id="quiz-container" style="display:none;">
-        <div id="question-container">
+    <div id="quiz-container" class="container" style="display:none;">
+        <div id="question-container" class="question-box">
             <span id="question">Question will go here</span>
         </div>
         <div id="options-container">
             <!-- Options will be added here dynamically -->
         </div>
-        <div id="timer">Time left: <span id="time">30</span> seconds</div>
-        <div id="score">Score: <span id="score-value">0</span></div>
-        <button id="next-button" onclick="nextQuestion()">Next</button>
-        <button id="submit-button" onclick="submitQuiz()" style="display:none;">Submit Quiz</button>
+        <div id="status-container">
+            <div id="timer" class="status-item">Time Left: <span id="time">30</span> seconds</div>
+            <div id="score" class="status-item">Score: <span id="score-value">0</span></div>
+        </div>
+        <div class="button-container">
+            <button id="next-button" class="btn">Next</button>
+            <button id="submit-button" class="btn" style="display:none;">Submit Quiz</button>
+        </div>
     </div>
 
     <script src="app.js"></script>
 </body>
 </html>
-
