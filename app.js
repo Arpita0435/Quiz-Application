@@ -9,6 +9,7 @@ const questions = [
     { question: "Which planet is known as the Red Planet?", options: ["Earth", "Mars", "Venus", "Jupiter"], correct: 1 },
     { question: "What is the boiling point of water?", options: ["100°C", "90°C", "110°C", "120°C"], correct: 0 },
     { question: "What is the currency of the USA?", options: ["Dollar", "Euro", "Pound", "Yen"], correct: 0 }
+];ons: ["Dollar", "Euro", "Pound", "Yen"], correct: 0 }
 ];
 
 let currentQuestionIndex = 0;
